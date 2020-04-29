@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2019 at 03:42 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Apr 29, 2020 at 07:34 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `oams`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(9) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact` varchar(15) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `status` int(1) NOT NULL,
+  `img` varchar(100) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `dob` date NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `email`, `contact`, `password`, `status`, `img`, `address`, `dob`, `reg_date`) VALUES
+(1, 'Abhishek Majumdar', 'webdevabhi4@gmail.com', '7001916946', '0f2b5d185c89b736a781f0d2d8a19f68', 1, 'IMG_20190307_185003.jpg', 'Nuruddin Road Bye Lane Kadam Talab, Asansol', '1998-05-23', '2020-04-26 04:44:46');
 
 -- --------------------------------------------------------
 
@@ -40,7 +65,7 @@ CREATE TABLE `fac_details` (
   `address` varchar(200) NOT NULL,
   `dept` varchar(10) NOT NULL,
   `dob` date NOT NULL,
-  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -48,12 +73,12 @@ CREATE TABLE `fac_details` (
 --
 
 INSERT INTO `fac_details` (`id`, `name`, `email`, `contact`, `qualification`, `password`, `status`, `img`, `address`, `dept`, `dob`, `reg_date`) VALUES
-(1, 'Abhijit Banerjee', 'abhijit.ricis@gmail.com', '9732160684', 'M.Tech(IT)', '2bdf69122953b5a74d77426f60e7844e', 1, 'banerjee_sir.jpg', 'Kalyanpur Housing, Asansol', 'BCA(Hons)', '1980-01-01', '2019-06-08 06:42:09'),
-(2, 'Gurudev Adhikary', 'dgpguru@gmail.com', '7318744241', 'MCA', 'f98bb16cd2b6ebe7360699557641a34e', 1, 'gurudev_sir.jpg', 'Durgapur', 'BCA(Hons)', '1975-01-01', '2019-06-08 06:03:18'),
-(3, 'Hemant Kr. Mahato', 'hemant@ricisonline.com', '8927662654', 'MCA', '1f3efdb52cfafe39ed90a3f4af145062', 1, 'hemant_sir.jpg', 'Raniganj, Near Anandalok Hospital', 'BCA(Hons)', '1983-01-01', '2019-06-08 06:05:46'),
+(1, 'Abhijit Banerjee', 'abhijit.ricis@gmail.com', '9732160684', 'M.Tech(IT)', '81121b7b351ace253fc6a9e3f9bdd9c7', 1, 'banerjee_sir.jpg', 'Kalyanpur Housing, Asansol', 'BCA(Hons)', '1980-01-01', '2020-04-29 03:29:42'),
+(2, 'Gurudev Adhikary', 'dgpguru@gmail.com', '7318744241', 'MCA', 'f98bb16cd2b6ebe7360699557641a34e', 1, 'gurudev_sir.jpg', 'Durgapur', 'BCA(Hons)', '1975-01-01', '2019-07-03 09:52:33'),
+(3, 'Hemant Kr. Mahato', 'hemant@ricisonline.com', '8927662654', 'MCA', '1f3efdb52cfafe39ed90a3f4af145062', 1, 'hemant_sir.jpg', 'Raniganj, Near Anandalok Hospital', 'BCA(Hons)', '1983-01-01', '2019-07-03 09:52:26'),
 (4, 'Bijoy Gupta', 'bijoy@ricisonline.com', '7908677630', 'MBA', '3171b38a06e63c27951aeac253e03c78', 1, 'bijoy_sir.jpg', 'Durgapur', 'BBA(Hons)', '1981-01-01', '2019-06-08 10:52:37'),
 (5, 'Paromita Mukherjee', 'paromita@ricisonline.com', '9876752310', 'MBA', '9163d0ea6e5ac6c8266e0451c6a21bf7', 1, 'paromita_maam.jpg', 'Asansol Mohisila Colony', 'BBA(Hons)', '1980-01-01', '2019-06-08 07:10:26'),
-(6, 'Rajat Bose', 'bose.raja@gmail.com', '9434985599', 'MCA', '7ba9f8477e0afa3e3d491fc13bbaf34f', 1, 'rajat_bose.jpg', 'Nuruddin Road Bye Lane, Asansol 713303', 'BCA(Hons)', '1978-07-02', '2019-06-09 17:41:04');
+(6, 'Rajat Bose', 'bose.raja@gmail.com', '9434985599', 'MCA', '7ba9f8477e0afa3e3d491fc13bbaf34f', 1, 'rajat_bose.jpg', 'Nuruddin Road Bye Lane, Asansol 713303', 'BCA(Hons)', '1978-07-02', '2019-07-03 09:52:27');
 
 -- --------------------------------------------------------
 
@@ -68,18 +93,8 @@ CREATE TABLE `remarks` (
   `uploaded_by` varchar(150) NOT NULL,
   `remarks` varchar(200) NOT NULL,
   `marks` int(3) NOT NULL,
-  `uploaded_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `uploaded_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `remarks`
---
-
-INSERT INTO `remarks` (`id`, `st_id`, `assignment_id`, `uploaded_by`, `remarks`, `marks`, `uploaded_date`) VALUES
-(1, 8, 7, 'Abhijit Banerjee', 'Very Good', 10, '2019-06-11 05:56:50'),
-(4, 10, 13, 'Abhijit Banerjee', 'Very Good', 10, '2019-06-11 06:21:21'),
-(7, 10, 7, 'Abhijit Banerjee', 'Very Good', 9, '2019-06-11 06:26:24'),
-(8, 11, 9, 'Bijoy Gupta', 'aaaa!!! Khuuuub Valo .. hi hi...', 9, '2019-06-11 08:45:22');
 
 -- --------------------------------------------------------
 
@@ -92,28 +107,37 @@ CREATE TABLE `st_details` (
   `name` varchar(120) NOT NULL,
   `email` varchar(200) NOT NULL,
   `contact` varchar(13) NOT NULL,
-  `course` varchar(10) NOT NULL,
+  `course` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
   `status` int(1) NOT NULL,
   `img` varchar(200) NOT NULL,
   `address` varchar(300) NOT NULL,
   `year` varchar(6) NOT NULL,
   `dob` date NOT NULL,
-  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `certificate` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `st_details`
 --
 
-INSERT INTO `st_details` (`id`, `name`, `email`, `contact`, `course`, `password`, `status`, `img`, `address`, `year`, `dob`, `reg_date`) VALUES
-(8, 'Abhishek Majumdar', 'webdevabhi4@gmail.com', '7001916946', 'BCA(Hons)', '5cbc95a2d94993f8da72e428ba4d92bf', 1, 'IMG_20190307_185003.jpg', 'Nuruddin Road Bye Lane Kadam Talab, Asansol', '3rd', '1998-05-22', '2019-06-08 11:26:47'),
-(10, 'Deepmalya Sarkar', 'deepmalyasarkar2@gmail.com', '9933512272', 'BCA(Hons)', 'cfe23e59339b3fabc18a1ce90d4a0307', 1, 'deepmalya.jpg', 'Ismile More Near Homoeopathy College, Asansol', '3rd', '1998-01-02', '2019-06-08 08:03:41'),
-(11, 'Rupesh Modi', 'rupesh.modi@gmail.com', '7891236783', 'BBA(Hons)', '459b523f745182cccd4ffbf3f66d508e', 1, 'rupesh.jpg', 'Pandabeswar', '2nd', '1995-01-01', '2019-06-08 10:55:36'),
-(12, 'Souvik Chatterjee', 'souvik.chatterjee@gmail.com', '6782347891', 'BCA(Hons)', '9033d76d4e67e41900a032e25f0ffea8', 1, 'souvik.jpg', 'Raniganj', '2nd', '2000-01-01', '2019-06-08 08:06:01'),
-(13, 'Kinshuk Paul', 'kinshuk.paul@gmail.com', '9900837288', 'BCA(Hons)', '97ba1096a91a4c4ba43b238a5aeb1dc8', 1, 'kinshuk.jpg', 'Gopalpur, Asansol', '3rd', '1997-01-01', '2019-06-08 08:07:03'),
-(14, 'Indranil Chowdhury', 'indranil.chowdhury@gmail.com', '9933984142', 'BCA(Hons)', '54cc6c493caa5b635e8c5fbcc3316e76', 1, 'indranil.jpg', 'Ukhra', '3rd', '1997-01-01', '2019-06-08 08:08:10'),
-(15, 'Agni Chatterjee', 'agni.chatterjee@gmail.com', '7892348901', 'BBA(Hons)', 'a43864e9c69fd9b42b0ff0c52e79d20c', 1, 'agni.jpg', 'Raniganj', '3rd', '1997-01-01', '2019-06-08 10:55:41');
+INSERT INTO `st_details` (`id`, `name`, `email`, `contact`, `course`, `password`, `status`, `img`, `address`, `year`, `dob`, `reg_date`, `certificate`) VALUES
+(19, 'Aritra Mukherjee', 'aritra@gmail.com', '9899343234', 'BCA(Hons)', 'a8201769d75a926bf9fe8667b8347e23', 1, '5e9dbc9577e0e.jpg', 'Asansol, Mohisila Colony', '1st', '1999-12-24', '2020-04-29 02:38:42', ''),
+(20, 'Abhishek Maji', 'maji.abhishek@gmail.com', '7989782311', 'BCA(Hons)', '0f2b5d185c89b736a781f0d2d8a19f68', 1, '5e9ea03024f66.jpg', 'Durgapur, Bhiringi Kali Bari', '1st', '1999-05-03', '2020-04-29 02:38:44', ''),
+(21, 'Swagata Rakshit', 'swagata@gmail.com', '9099873451', 'BCA(Hons)', '5c82b93b944f274153d978d557385136', 1, '5e9d2dbb5e478.jpg', 'Kulti, Asansol Main Road', '1st', '1998-06-23', '2020-04-29 02:38:45', ''),
+(22, 'Mimi Sarkar', 'mimi@gmail.com', '9289091234', 'BCA(Hons)', 'f92d9ba17db6f95062a343e343f5ed75', 1, '5e9dbcbc676ad.jpg', 'Ravindra Saravar, Kolkata', '1st', '1998-06-05', '2020-04-29 02:38:46', ''),
+(23, 'Snigdha Sarkar', 'snigdha@gmail.com', '9837389201', 'BCA(Hons)', '790e0500751581e59c5505f57ca86bfd', 1, 'jpg.jpg', 'Gopal Nagar, Asansol', '2nd', '1998-04-25', '2020-04-29 02:38:47', ''),
+(24, 'Arindam Si', 'arindam@gmail.com', '9899343232', 'BCA(Hons)', '9c9db171ef664ae6654072242960f174', 1, 'Byomkesh.jpg', 'Burdwan, Gopal Math', '2nd', '1998-06-05', '2020-04-29 02:38:50', ''),
+(25, 'Param Sen', 'param.sen@gmail.com', '8983249646', 'BCA(Hons)', '56f65ed0234a47a19e9ef874dbfc2a4a', 1, '61392803.jpg', 'Howrah, Kolkata', '2nd', '1998-09-08', '2020-04-29 02:38:51', ''),
+(26, 'Mir Khan', 'mir@gmail.com', '7898763425', 'BCA(Hons)', '2866427eef91d1bcf3574719eaa43afe', 1, 'mir-afsar-ali_1515149553.jpg', 'Durgapur, Benachity', '3rd', '1998-05-09', '2020-04-29 02:38:53', ''),
+(27, 'Anushka Sarkhel', 'anushka@gmail.com', '6782349091', 'BCA(Hons)', 'b46355047cdd271f7c553633b7603854', 1, 'Srabanti-Chatterjee.jpg', 'Disergarh, Asansol', '3rd', '1998-09-02', '2020-04-29 02:38:54', ''),
+(28, 'Ritwik Das', 'ritwik@gmail.com', '9897876563', 'BCA(Hons)', 'c5f740bac173e21c3cd87a116418f0be', 1, '159314.jpg', 'Durgapur, DPS Colony', '3rd', '1995-07-07', '2020-04-29 02:38:56', ''),
+(29, 'Jeet Kumar Shaw', 'jeet@gmail.com', '8987654562', 'BBA(Hons)', 'c90d586fe6bd5c02de86a6d3d0375f29', 1, 'akshay-kumar-20191210145129-78.jpg', 'Patna', '1st', '1998-09-08', '2020-04-29 02:38:57', ''),
+(30, 'Bipasha Sen', 'bipasha@gmail.com', '7899872344', 'BBA(Hons)', 'd4140dc11c586f268a757efba90d14ee', 1, '4b57c22eb1a2c4b89a70b81dc9460e4e.jpg', 'Kolkata', '1st', '1998-09-05', '2020-04-29 02:38:58', ''),
+(31, 'Abhishikta Gupta', 'abhishikta@gmail.com', '6788762341', 'BBA(Hons)', '627f32757f4e983ce01a74fce060bd20', 1, '116698.jpg', 'Asansol, Mohisila Colony', '2nd', '1998-08-09', '2020-04-29 02:39:00', ''),
+(32, 'Adarsha Roy', 'roy.a@gmail.com', '7866542313', 'BBA(Hons)', '7b2bfd29da8e67b02535702fafc60e2a', 1, 'abhishke_bachan_20100628.jpg', 'Apcar Garden, Asansol', '3rd', '1998-02-06', '2020-04-29 02:38:40', ''),
+(33, 'Abhishek Sen', 'abhisheksen@hotmail.com', '6788762238', 'BBA(Hons)', '0f2b5d185c89b736a781f0d2d8a19f68', 2, '5d42f51d76ad4.jpg', 'Burnpur', '2nd', '1998-08-08', '2020-04-29 02:28:44', '');
 
 -- --------------------------------------------------------
 
@@ -130,19 +154,8 @@ CREATE TABLE `submit_assignment` (
   `dept` varchar(200) NOT NULL,
   `year` varchar(5) NOT NULL,
   `file` varchar(200) NOT NULL,
-  `submit_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `submit_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `submit_assignment`
---
-
-INSERT INTO `submit_assignment` (`id`, `assignment_id`, `std_id`, `fac_name`, `submit_by`, `dept`, `year`, `file`, `submit_date`) VALUES
-(2, 7, 8, 'Abhijit Banerjee', 'Abhishek Majumdar', 'BCA(Hons)', '3rd', 'tutorial.pdf', '2019-06-10 14:17:25'),
-(3, 9, 11, 'Bijoy Gupta', 'Rupesh Modi', 'BBA(Hons)', '2nd', 'C Syllabus - AM (1).pdf', '2019-06-10 14:28:15'),
-(8, 7, 10, 'Abhijit Banerjee', 'Deepmalya Sarkar', 'BCA(Hons)', '3rd', 'C Syllabus - AM (1).pdf', '2019-06-10 15:21:35'),
-(9, 11, 10, 'Hemant Kr. Mahato', 'Deepmalya Sarkar', 'BCA(Hons)', '3rd', 'coding_dojo_ebook.pdf', '2019-06-10 15:22:03'),
-(10, 13, 10, 'Abhijit Banerjee', 'Deepmalya Sarkar', 'BCA(Hons)', '3rd', 'Assignment-1.zip', '2019-06-10 15:25:12');
 
 -- --------------------------------------------------------
 
@@ -160,7 +173,7 @@ CREATE TABLE `task_assign` (
   `last_date` date NOT NULL,
   `file` varchar(150) NOT NULL,
   `uploaded_by` varchar(150) NOT NULL,
-  `assign_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `assign_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -168,13 +181,9 @@ CREATE TABLE `task_assign` (
 --
 
 INSERT INTO `task_assign` (`id`, `course_title`, `course_code`, `assignment_title`, `dept`, `year`, `last_date`, `file`, `uploaded_by`, `assign_date`) VALUES
-(7, 'Python LAB', 'BCA-606', 'Loop Using Python', 'BCA(Hons)', '3rd', '2019-06-21', 'Python Programming.pdf', 'Abhijit Banerjee', '2019-06-10 07:37:26'),
-(8, 'C++ LAB', 'BCA-302', 'Loop Using C++', 'BCA(Hons)', '2nd', '2019-06-19', 'cpp_tutorial.pdf', 'Abhijit Banerjee', '2019-06-10 07:38:28'),
-(9, 'Business Administration', 'BA-101', 'Journal Ledger Trial Balance', 'BBA(Hons)', '2nd', '2019-06-18', 'Assignment-1.zip', 'Bijoy Gupta', '2019-06-10 14:26:53'),
-(10, 'C# LAB', 'BCA-607', 'Loop Using C#', 'BCA(Hons)', '3rd', '2019-06-12', '25842799.pdf', 'Hemant Kr. Mahato', '2019-06-10 14:50:58'),
-(11, 'HKM', 'HKM', 'HKM', 'BCA(Hons)', '3rd', '2019-06-22', 'AM Online Library Management System (1).docx', 'Hemant Kr. Mahato', '2019-06-10 15:03:46'),
-(12, 'AB', 'AB', 'AB', 'BCA(Hons)', '3rd', '2019-06-20', 'Assignment-1 (1).zip', 'Abhijit Banerjee', '2019-06-10 15:04:26'),
-(13, 'C# LAB', 'BCA-606', 'Loop Using C#', 'BCA(Hons)', '3rd', '2019-06-23', 'AM Online Library Management System.docx', 'Abhijit Banerjee', '2019-06-10 15:24:08');
+(14, 'Assignment I C Programming Language', 'BCA-1-C', 'Write Codes For Each And Every Code', 'BCA(Hons)', '1st', '2020-05-01', 'clab.pdf', 'Abhijit Banerjee', '2020-04-29 03:03:42'),
+(15, 'Assignment I C++ Programming Language', 'BCA-2-C++', 'Write Codes For Each And Every Code', 'BCA(Hons)', '2nd', '2020-05-01', 'C++ Assignment by AM.pdf', 'Abhijit Banerjee', '2020-04-29 03:11:49'),
+(16, 'Assignment I Java Programming Language', 'BCA-3-Java', 'Write Codes For Each And Every Code', 'BCA(Hons)', '3rd', '2020-05-01', 'Java-Various Numbers.pdf', 'Abhijit Banerjee', '2020-04-29 03:20:44');
 
 -- --------------------------------------------------------
 
@@ -188,7 +197,7 @@ CREATE TABLE `upload_notes` (
   `year` varchar(5) NOT NULL,
   `uploaded_by` varchar(150) NOT NULL,
   `file` varchar(200) NOT NULL,
-  `uploaded_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `uploaded_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -196,12 +205,19 @@ CREATE TABLE `upload_notes` (
 --
 
 INSERT INTO `upload_notes` (`id`, `title`, `year`, `uploaded_by`, `file`, `uploaded_date`) VALUES
-(2, 'C#', '3rd', 'Abhijit Banerjee', 'C Programming.docx', '2019-06-10 19:18:00'),
-(3, 'C', '3rd', 'Abhijit Banerjee', 'BCA - 4TH SEMESTER SYLLABUS - 27.03.2018-1.pdf', '2019-06-10 19:18:52');
+(5, 'C Language', '1st', 'Abhijit Banerjee', 'Class_Object.pdf', '2020-04-29 03:21:11'),
+(6, 'C++ Language', '2nd', 'Abhijit Banerjee', 'cpp_tutorial.pdf', '2020-04-29 03:21:31'),
+(7, 'Java Language', '3rd', 'Abhijit Banerjee', 'JAVA.pdf', '2020-04-29 03:21:48');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `fac_details`
@@ -244,40 +260,46 @@ ALTER TABLE `upload_notes`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `fac_details`
 --
 ALTER TABLE `fac_details`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `remarks`
 --
 ALTER TABLE `remarks`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `st_details`
 --
 ALTER TABLE `st_details`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `submit_assignment`
 --
 ALTER TABLE `submit_assignment`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `task_assign`
 --
 ALTER TABLE `task_assign`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `upload_notes`
 --
 ALTER TABLE `upload_notes`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
